@@ -8,7 +8,8 @@ For more information, please visit [https://www.harness.io](https://www.harness.
 
 ### Requirements
 
-PHP 7.2 and later.
+PHP 7.4 and later.
+Should also work with PHP 8.0.
 
 ### Composer
 
@@ -93,6 +94,7 @@ Class | Method | HTTP request | Description
 - [Evaluation](docs/Model/Evaluation.md)
 - [FeatureConfig](docs/Model/FeatureConfig.md)
 - [FeatureState](docs/Model/FeatureState.md)
+- [GetEvaluations200Response](docs/Model/GetEvaluations200Response.md)
 - [KeyValue](docs/Model/KeyValue.md)
 - [Metrics](docs/Model/Metrics.md)
 - [MetricsData](docs/Model/MetricsData.md)

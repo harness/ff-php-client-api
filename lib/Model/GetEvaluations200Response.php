@@ -1,6 +1,6 @@
 <?php
 /**
- * Error
+ * GetEvaluations200Response
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Error Class Doc Comment
+ * GetEvaluations200Response Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -43,7 +43,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Error implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Error';
+    protected static $openAPIModelName = 'GetEvaluations_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,12 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'message' => 'string'
+        'evaluations' => '\OpenAPI\Client\Model\Evaluation[]',
+        'version' => 'int',
+        'page_count' => 'int',
+        'item_count' => 'int',
+        'page_size' => 'int',
+        'page_index' => 'int'
     ];
 
     /**
@@ -72,8 +76,12 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'message' => null
+        'evaluations' => null,
+        'version' => null,
+        'page_count' => null,
+        'item_count' => null,
+        'page_size' => null,
+        'page_index' => null
     ];
 
     /**
@@ -103,8 +111,12 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message'
+        'evaluations' => 'evaluations',
+        'version' => 'version',
+        'page_count' => 'pageCount',
+        'item_count' => 'itemCount',
+        'page_size' => 'pageSize',
+        'page_index' => 'pageIndex'
     ];
 
     /**
@@ -113,8 +125,12 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage'
+        'evaluations' => 'setEvaluations',
+        'version' => 'setVersion',
+        'page_count' => 'setPageCount',
+        'item_count' => 'setItemCount',
+        'page_size' => 'setPageSize',
+        'page_index' => 'setPageIndex'
     ];
 
     /**
@@ -123,8 +139,12 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage'
+        'evaluations' => 'getEvaluations',
+        'version' => 'getVersion',
+        'page_count' => 'getPageCount',
+        'item_count' => 'getItemCount',
+        'page_size' => 'getPageSize',
+        'page_index' => 'getPageIndex'
     ];
 
     /**
@@ -184,8 +204,12 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = $data['code'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
+        $this->container['evaluations'] = $data['evaluations'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
+        $this->container['page_count'] = $data['page_count'] ?? null;
+        $this->container['item_count'] = $data['item_count'] ?? null;
+        $this->container['page_size'] = $data['page_size'] ?? null;
+        $this->container['page_index'] = $data['page_index'] ?? null;
     }
 
     /**
@@ -197,11 +221,17 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+        if ($this->container['page_count'] === null) {
+            $invalidProperties[] = "'page_count' can't be null";
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
+        if ($this->container['item_count'] === null) {
+            $invalidProperties[] = "'item_count' can't be null";
+        }
+        if ($this->container['page_size'] === null) {
+            $invalidProperties[] = "'page_size' can't be null";
+        }
+        if ($this->container['page_index'] === null) {
+            $invalidProperties[] = "'page_index' can't be null";
         }
         return $invalidProperties;
     }
@@ -219,49 +249,145 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets code
+     * Gets evaluations
      *
-     * @return string
+     * @return \OpenAPI\Client\Model\Evaluation[]|null
      */
-    public function getCode()
+    public function getEvaluations()
     {
-        return $this->container['code'];
+        return $this->container['evaluations'];
     }
 
     /**
-     * Sets code
+     * Sets evaluations
      *
-     * @param string $code code
+     * @param \OpenAPI\Client\Model\Evaluation[]|null $evaluations evaluations
      *
      * @return self
      */
-    public function setCode($code)
+    public function setEvaluations($evaluations)
     {
-        $this->container['code'] = $code;
+        $this->container['evaluations'] = $evaluations;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets version
      *
-     * @return string
+     * @return int|null
      */
-    public function getMessage()
+    public function getVersion()
     {
-        return $this->container['message'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets message
+     * Sets version
      *
-     * @param string $message message
+     * @param int|null $version version
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setVersion($version)
     {
-        $this->container['message'] = $message;
+        $this->container['version'] = $version;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_count
+     *
+     * @return int
+     */
+    public function getPageCount()
+    {
+        return $this->container['page_count'];
+    }
+
+    /**
+     * Sets page_count
+     *
+     * @param int $page_count page_count
+     *
+     * @return self
+     */
+    public function setPageCount($page_count)
+    {
+        $this->container['page_count'] = $page_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets item_count
+     *
+     * @return int
+     */
+    public function getItemCount()
+    {
+        return $this->container['item_count'];
+    }
+
+    /**
+     * Sets item_count
+     *
+     * @param int $item_count item_count
+     *
+     * @return self
+     */
+    public function setItemCount($item_count)
+    {
+        $this->container['item_count'] = $item_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_size
+     *
+     * @return int
+     */
+    public function getPageSize()
+    {
+        return $this->container['page_size'];
+    }
+
+    /**
+     * Sets page_size
+     *
+     * @param int $page_size page_size
+     *
+     * @return self
+     */
+    public function setPageSize($page_size)
+    {
+        $this->container['page_size'] = $page_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_index
+     *
+     * @return int
+     */
+    public function getPageIndex()
+    {
+        return $this->container['page_index'];
+    }
+
+    /**
+     * Sets page_index
+     *
+     * @param int $page_index page_index
+     *
+     * @return self
+     */
+    public function setPageIndex($page_index)
+    {
+        $this->container['page_index'] = $page_index;
 
         return $this;
     }

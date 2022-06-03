@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 ## `getEvaluations()`
 
 ```php
-getEvaluations($environment_uuid, $target): Pagination
+getEvaluations($environment_uuid, $target): \OpenAPI\Client\Model\GetEvaluations200Response
 ```
 
 Get feature evaluations for target
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Pagination**](../Model/Pagination.md)
+[**\OpenAPI\Client\Model\GetEvaluations200Response**](../Model/GetEvaluations200Response.md)
 
 ### Authorization
 
