@@ -60,7 +60,6 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'evaluations' => '\OpenAPI\Client\Model\Evaluation[]',
         'version' => 'int',
         'page_count' => 'int',
         'item_count' => 'int',
@@ -76,7 +75,6 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'evaluations' => null,
         'version' => null,
         'page_count' => null,
         'item_count' => null,
@@ -111,7 +109,6 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'evaluations' => 'evaluations',
         'version' => 'version',
         'page_count' => 'pageCount',
         'item_count' => 'itemCount',
@@ -125,7 +122,6 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'evaluations' => 'setEvaluations',
         'version' => 'setVersion',
         'page_count' => 'setPageCount',
         'item_count' => 'setItemCount',
@@ -139,7 +135,6 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'evaluations' => 'getEvaluations',
         'version' => 'getVersion',
         'page_count' => 'getPageCount',
         'item_count' => 'getItemCount',
@@ -204,7 +199,6 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['evaluations'] = $data['evaluations'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['page_count'] = $data['page_count'] ?? null;
         $this->container['item_count'] = $data['item_count'] ?? null;
@@ -249,30 +243,6 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets evaluations
-     *
-     * @return \OpenAPI\Client\Model\Evaluation[]|null
-     */
-    public function getEvaluations()
-    {
-        return $this->container['evaluations'];
-    }
-
-    /**
-     * Sets evaluations
-     *
-     * @param \OpenAPI\Client\Model\Evaluation[]|null $evaluations evaluations
-     *
-     * @return self
-     */
-    public function setEvaluations($evaluations)
-    {
-        $this->container['evaluations'] = $evaluations;
-
-        return $this;
-    }
-
-    /**
      * Gets version
      *
      * @return int|null
@@ -285,7 +255,7 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param int|null $version The version of this object.  The version will be incremented each time the object is modified
      *
      * @return self
      */
@@ -309,7 +279,7 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets page_count
      *
-     * @param int $page_count page_count
+     * @param int $page_count The total number of pages
      *
      * @return self
      */
@@ -333,7 +303,7 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets item_count
      *
-     * @param int $item_count item_count
+     * @param int $item_count The total number of items
      *
      * @return self
      */
@@ -357,7 +327,7 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets page_size
      *
-     * @param int $page_size page_size
+     * @param int $page_size The number of items per page
      *
      * @return self
      */
@@ -381,7 +351,7 @@ class GetEvaluations200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets page_index
      *
-     * @param int $page_index page_index
+     * @param int $page_index The current page
      *
      * @return self
      */

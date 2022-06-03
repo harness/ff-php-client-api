@@ -478,11 +478,7 @@ class Configuration
             ],
             [
                 "url" => "http://localhost:3000/api/1.0",
-                "description" => "localhost endpoints",
-            ],
-            [
-                "url" => "http://localhost:9090/api/1.0",
-                "description" => "docker endpoints",
+                "description" => "CfClient description",
             ]
         ];
     }

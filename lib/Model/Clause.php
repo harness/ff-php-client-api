@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Clause Class Doc Comment
  *
  * @category Class
+ * @description A clause describes what conditions are used to evaluate a flag
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -215,9 +216,6 @@ class Clause implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['attribute'] === null) {
             $invalidProperties[] = "'attribute' can't be null";
         }
@@ -248,7 +246,7 @@ class Clause implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -258,7 +256,7 @@ class Clause implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string|null $id The unique ID for the clause
      *
      * @return self
      */
@@ -282,7 +280,7 @@ class Clause implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attribute
      *
-     * @param string $attribute attribute
+     * @param string $attribute The attribute to use in the clause.  This can be any target attribute
      *
      * @return self
      */
@@ -306,7 +304,7 @@ class Clause implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets op
      *
-     * @param string $op op
+     * @param string $op The type of operation such as equals, starts_with, contains
      *
      * @return self
      */
@@ -330,7 +328,7 @@ class Clause implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets values
      *
-     * @param string[] $values values
+     * @param string[] $values The values that are compared against the operator
      *
      * @return self
      */
@@ -354,7 +352,7 @@ class Clause implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets negate
      *
-     * @param bool $negate negate
+     * @param bool $negate Is the operation negated?
      *
      * @return self
      */

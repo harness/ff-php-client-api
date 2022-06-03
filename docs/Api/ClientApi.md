@@ -73,7 +73,7 @@ No authorization required
 ## `getAllSegments()`
 
 ```php
-getAllSegments($environment_uuid): \OpenAPI\Client\Model\Segment[]
+getAllSegments($environment_uuid, $cluster): \OpenAPI\Client\Model\Segment[]
 ```
 
 Retrieve all segments.
@@ -98,9 +98,10 @@ $apiInstance = new OpenAPI\Client\Api\ClientApi(
     $config
 );
 $environment_uuid = 'environment_uuid_example'; // string | Unique identifier for the environment object in the API.
+$cluster = 'cluster_example'; // string | Unique identifier for the cluster for the account
 
 try {
-    $result = $apiInstance->getAllSegments($environment_uuid);
+    $result = $apiInstance->getAllSegments($environment_uuid, $cluster);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ClientApi->getAllSegments: ', $e->getMessage(), PHP_EOL;
@@ -112,6 +113,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **environment_uuid** | **string**| Unique identifier for the environment object in the API. |
+ **cluster** | **string**| Unique identifier for the cluster for the account | [optional]
 
 ### Return type
 
@@ -133,7 +135,7 @@ Name | Type | Description  | Notes
 ## `getEvaluationByIdentifier()`
 
 ```php
-getEvaluationByIdentifier($environment_uuid, $feature, $target): \OpenAPI\Client\Model\Evaluation
+getEvaluationByIdentifier($environment_uuid, $feature, $target, $cluster): \OpenAPI\Client\Model\Evaluation
 ```
 
 Get feature evaluations for target
@@ -158,9 +160,10 @@ $apiInstance = new OpenAPI\Client\Api\ClientApi(
 $environment_uuid = 'environment_uuid_example'; // string | Unique identifier for the environment object in the API.
 $feature = 'feature_example'; // string | Unique identifier for the flag object in the API.
 $target = 'target_example'; // string | Unique identifier for the target object in the API.
+$cluster = 'cluster_example'; // string | Unique identifier for the cluster for the account
 
 try {
-    $result = $apiInstance->getEvaluationByIdentifier($environment_uuid, $feature, $target);
+    $result = $apiInstance->getEvaluationByIdentifier($environment_uuid, $feature, $target, $cluster);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ClientApi->getEvaluationByIdentifier: ', $e->getMessage(), PHP_EOL;
@@ -174,6 +177,7 @@ Name | Type | Description  | Notes
  **environment_uuid** | **string**| Unique identifier for the environment object in the API. |
  **feature** | **string**| Unique identifier for the flag object in the API. |
  **target** | **string**| Unique identifier for the target object in the API. |
+ **cluster** | **string**| Unique identifier for the cluster for the account | [optional]
 
 ### Return type
 
@@ -195,7 +199,7 @@ Name | Type | Description  | Notes
 ## `getEvaluations()`
 
 ```php
-getEvaluations($environment_uuid, $target): \OpenAPI\Client\Model\GetEvaluations200Response
+getEvaluations($environment_uuid, $target, $cluster): \OpenAPI\Client\Model\Evaluation[]
 ```
 
 Get feature evaluations for target
@@ -219,9 +223,10 @@ $apiInstance = new OpenAPI\Client\Api\ClientApi(
 );
 $environment_uuid = 'environment_uuid_example'; // string | Unique identifier for the environment object in the API.
 $target = 'target_example'; // string | Unique identifier for the target object in the API.
+$cluster = 'cluster_example'; // string | Unique identifier for the cluster for the account
 
 try {
-    $result = $apiInstance->getEvaluations($environment_uuid, $target);
+    $result = $apiInstance->getEvaluations($environment_uuid, $target, $cluster);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ClientApi->getEvaluations: ', $e->getMessage(), PHP_EOL;
@@ -234,10 +239,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **environment_uuid** | **string**| Unique identifier for the environment object in the API. |
  **target** | **string**| Unique identifier for the target object in the API. |
+ **cluster** | **string**| Unique identifier for the cluster for the account | [optional]
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetEvaluations200Response**](../Model/GetEvaluations200Response.md)
+[**\OpenAPI\Client\Model\Evaluation[]**](../Model/Evaluation.md)
 
 ### Authorization
 
@@ -255,7 +261,7 @@ Name | Type | Description  | Notes
 ## `getFeatureConfig()`
 
 ```php
-getFeatureConfig($environment_uuid): \OpenAPI\Client\Model\FeatureConfig[]
+getFeatureConfig($environment_uuid, $cluster): \OpenAPI\Client\Model\FeatureConfig[]
 ```
 
 Get all feature flags activations
@@ -280,9 +286,10 @@ $apiInstance = new OpenAPI\Client\Api\ClientApi(
     $config
 );
 $environment_uuid = 'environment_uuid_example'; // string | Unique identifier for the environment object in the API.
+$cluster = 'cluster_example'; // string | Unique identifier for the cluster for the account
 
 try {
-    $result = $apiInstance->getFeatureConfig($environment_uuid);
+    $result = $apiInstance->getFeatureConfig($environment_uuid, $cluster);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ClientApi->getFeatureConfig: ', $e->getMessage(), PHP_EOL;
@@ -294,6 +301,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **environment_uuid** | **string**| Unique identifier for the environment object in the API. |
+ **cluster** | **string**| Unique identifier for the cluster for the account | [optional]
 
 ### Return type
 
@@ -315,7 +323,7 @@ Name | Type | Description  | Notes
 ## `getFeatureConfigByIdentifier()`
 
 ```php
-getFeatureConfigByIdentifier($identifier, $environment_uuid): \OpenAPI\Client\Model\FeatureConfig
+getFeatureConfigByIdentifier($identifier, $environment_uuid, $cluster): \OpenAPI\Client\Model\FeatureConfig
 ```
 
 Get feature config
@@ -339,9 +347,10 @@ $apiInstance = new OpenAPI\Client\Api\ClientApi(
 );
 $identifier = 'identifier_example'; // string | Unique identifier for the flag object in the API.
 $environment_uuid = 'environment_uuid_example'; // string | Unique identifier for the environment object in the API.
+$cluster = 'cluster_example'; // string | Unique identifier for the cluster for the account
 
 try {
-    $result = $apiInstance->getFeatureConfigByIdentifier($identifier, $environment_uuid);
+    $result = $apiInstance->getFeatureConfigByIdentifier($identifier, $environment_uuid, $cluster);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ClientApi->getFeatureConfigByIdentifier: ', $e->getMessage(), PHP_EOL;
@@ -354,6 +363,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **string**| Unique identifier for the flag object in the API. |
  **environment_uuid** | **string**| Unique identifier for the environment object in the API. |
+ **cluster** | **string**| Unique identifier for the cluster for the account | [optional]
 
 ### Return type
 
@@ -375,7 +385,7 @@ Name | Type | Description  | Notes
 ## `getSegmentByIdentifier()`
 
 ```php
-getSegmentByIdentifier($identifier, $environment_uuid): \OpenAPI\Client\Model\Segment
+getSegmentByIdentifier($identifier, $environment_uuid, $cluster): \OpenAPI\Client\Model\Segment
 ```
 
 Retrieve a segment by identifier
@@ -401,9 +411,10 @@ $apiInstance = new OpenAPI\Client\Api\ClientApi(
 );
 $identifier = 'identifier_example'; // string | Unique identifier for the segment object in the API
 $environment_uuid = 'environment_uuid_example'; // string | Unique identifier for the environment object in the API
+$cluster = 'cluster_example'; // string | Unique identifier for the cluster for the account
 
 try {
-    $result = $apiInstance->getSegmentByIdentifier($identifier, $environment_uuid);
+    $result = $apiInstance->getSegmentByIdentifier($identifier, $environment_uuid, $cluster);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ClientApi->getSegmentByIdentifier: ', $e->getMessage(), PHP_EOL;
@@ -416,6 +427,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **string**| Unique identifier for the segment object in the API |
  **environment_uuid** | **string**| Unique identifier for the environment object in the API |
+ **cluster** | **string**| Unique identifier for the cluster for the account | [optional]
 
 ### Return type
 
@@ -437,7 +449,7 @@ Name | Type | Description  | Notes
 ## `stream()`
 
 ```php
-stream($api_key)
+stream($api_key, $cluster)
 ```
 
 Stream endpoint.
@@ -460,9 +472,10 @@ $apiInstance = new OpenAPI\Client\Api\ClientApi(
     $config
 );
 $api_key = 'api_key_example'; // string
+$cluster = 'cluster_example'; // string | Unique identifier for the cluster for the account
 
 try {
-    $apiInstance->stream($api_key);
+    $apiInstance->stream($api_key, $cluster);
 } catch (Exception $e) {
     echo 'Exception when calling ClientApi->stream: ', $e->getMessage(), PHP_EOL;
 }
@@ -473,6 +486,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **string**|  |
+ **cluster** | **string**| Unique identifier for the cluster for the account | [optional]
 
 ### Return type
 

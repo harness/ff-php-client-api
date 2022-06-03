@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Prerequisite Class Doc Comment
  *
  * @category Class
+ * @description Feature Flag pre-requisites
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -231,7 +232,7 @@ class Prerequisite implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets feature
      *
-     * @param string $feature feature
+     * @param string $feature The feature identifier that is the prerequisite
      *
      * @return self
      */
@@ -255,7 +256,7 @@ class Prerequisite implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets variations
      *
-     * @param string[] $variations variations
+     * @param string[] $variations A list of variations that must be met
      *
      * @return self
      */

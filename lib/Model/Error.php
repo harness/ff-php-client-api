@@ -61,7 +61,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'code' => 'string',
-        'message' => 'string'
+        'message' => 'string',
+        'details' => 'object'
     ];
 
     /**
@@ -73,7 +74,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'code' => null,
-        'message' => null
+        'message' => null,
+        'details' => null
     ];
 
     /**
@@ -104,7 +106,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'code' => 'code',
-        'message' => 'message'
+        'message' => 'message',
+        'details' => 'details'
     ];
 
     /**
@@ -114,7 +117,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'code' => 'setCode',
-        'message' => 'setMessage'
+        'message' => 'setMessage',
+        'details' => 'setDetails'
     ];
 
     /**
@@ -124,7 +128,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'code' => 'getCode',
-        'message' => 'getMessage'
+        'message' => 'getMessage',
+        'details' => 'getDetails'
     ];
 
     /**
@@ -186,6 +191,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['code'] = $data['code'] ?? null;
         $this->container['message'] = $data['message'] ?? null;
+        $this->container['details'] = $data['details'] ?? null;
     }
 
     /**
@@ -231,7 +237,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets code
      *
-     * @param string $code code
+     * @param string $code The http error code
      *
      * @return self
      */
@@ -255,13 +261,37 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param string $message message
+     * @param string $message The reason the request failed
      *
      * @return self
      */
     public function setMessage($message)
     {
         $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets details
+     *
+     * @return object|null
+     */
+    public function getDetails()
+    {
+        return $this->container['details'];
+    }
+
+    /**
+     * Sets details
+     *
+     * @param object|null $details Additional details about the error
+     *
+     * @return self
+     */
+    public function setDetails($details)
+    {
+        $this->container['details'] = $details;
 
         return $this;
     }

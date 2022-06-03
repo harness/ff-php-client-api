@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Segment Class Doc Comment
  *
  * @category Class
+ * @description A Target Group (Segment) response
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -279,7 +280,7 @@ class Segment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identifier
      *
-     * @param string $identifier Unique identifier for the segment.
+     * @param string $identifier Unique identifier for the target group.
      *
      * @return self
      */
@@ -303,7 +304,7 @@ class Segment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name Name of the segment.
+     * @param string $name Name of the target group.
      *
      * @return self
      */
@@ -327,7 +328,7 @@ class Segment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets environment
      *
-     * @param string|null $environment environment
+     * @param string|null $environment The environment this target group belongs to
      *
      * @return self
      */
@@ -351,7 +352,7 @@ class Segment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tags
      *
-     * @param \OpenAPI\Client\Model\Tag[]|null $tags tags
+     * @param \OpenAPI\Client\Model\Tag[]|null $tags Tags for this target group
      *
      * @return self
      */
@@ -375,7 +376,7 @@ class Segment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets included
      *
-     * @param \OpenAPI\Client\Model\Target[]|null $included included
+     * @param \OpenAPI\Client\Model\Target[]|null $included A list of Targets who belong to this target group
      *
      * @return self
      */
@@ -399,7 +400,7 @@ class Segment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets excluded
      *
-     * @param \OpenAPI\Client\Model\Target[]|null $excluded excluded
+     * @param \OpenAPI\Client\Model\Target[]|null $excluded A list of Targets who are excluded from this target group
      *
      * @return self
      */
@@ -447,7 +448,7 @@ class Segment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_at
      *
-     * @param int|null $created_at created_at
+     * @param int|null $created_at The data and time in milliseconds when the group was created
      *
      * @return self
      */
@@ -471,7 +472,7 @@ class Segment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets modified_at
      *
-     * @param int|null $modified_at modified_at
+     * @param int|null $modified_at The data and time in milliseconds when the group was last modified
      *
      * @return self
      */
@@ -495,7 +496,7 @@ class Segment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param int|null $version The version of this group.  Each time it is modified the version is incremented
      *
      * @return self
      */

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `postMetrics()`
 
 ```php
-postMetrics($environment, $metrics)
+postMetrics($environment, $cluster, $metrics)
 ```
 
 Send metrics to the Analytics server.
@@ -24,6 +24,11 @@ Send metrics to Analytics server
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+
 // Configure Bearer (JWT) authorization: BearerAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
@@ -35,10 +40,11 @@ $apiInstance = new OpenAPI\Client\Api\MetricsApi(
     $config
 );
 $environment = 'environment_example'; // string | environment parameter in query.
+$cluster = 'cluster_example'; // string | Unique identifier for the cluster for the account
 $metrics = new \OpenAPI\Client\Model\Metrics(); // \OpenAPI\Client\Model\Metrics
 
 try {
-    $apiInstance->postMetrics($environment, $metrics);
+    $apiInstance->postMetrics($environment, $cluster, $metrics);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsApi->postMetrics: ', $e->getMessage(), PHP_EOL;
 }
@@ -49,6 +55,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **environment** | **string**| environment parameter in query. |
+ **cluster** | **string**| Unique identifier for the cluster for the account | [optional]
  **metrics** | [**\OpenAPI\Client\Model\Metrics**](../Model/Metrics.md)|  | [optional]
 
 ### Return type
@@ -57,7 +64,7 @@ void (empty response body)
 
 ### Authorization
 
-[BearerAuth](../../README.md#BearerAuth)
+[ApiKeyAuth](../../README.md#ApiKeyAuth), [BearerAuth](../../README.md#BearerAuth)
 
 ### HTTP request headers
 

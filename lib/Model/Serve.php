@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Serve Class Doc Comment
  *
  * @category Class
+ * @description Describe the distribution rule and the variation that should be served to the target
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

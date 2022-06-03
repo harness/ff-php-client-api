@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TargetMap Class Doc Comment
  *
  * @category Class
+ * @description Target map provides the details of a target that belongs to a flag
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -197,6 +198,9 @@ class TargetMap implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['identifier'] === null) {
+            $invalidProperties[] = "'identifier' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -218,7 +222,7 @@ class TargetMap implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets identifier
      *
-     * @return string|null
+     * @return string
      */
     public function getIdentifier()
     {
@@ -228,7 +232,7 @@ class TargetMap implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identifier
      *
-     * @param string|null $identifier identifier
+     * @param string $identifier The identifier for the target
      *
      * @return self
      */
@@ -252,7 +256,7 @@ class TargetMap implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name The name of the target
      *
      * @return self
      */

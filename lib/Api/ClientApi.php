@@ -486,14 +486,15 @@ class ClientApi
      * Retrieve all segments.
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\Segment[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function getAllSegments($environment_uuid)
+    public function getAllSegments($environment_uuid, $cluster = null)
     {
-        list($response) = $this->getAllSegmentsWithHttpInfo($environment_uuid);
+        list($response) = $this->getAllSegmentsWithHttpInfo($environment_uuid, $cluster);
         return $response;
     }
 
@@ -503,14 +504,15 @@ class ClientApi
      * Retrieve all segments.
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\Segment[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllSegmentsWithHttpInfo($environment_uuid)
+    public function getAllSegmentsWithHttpInfo($environment_uuid, $cluster = null)
     {
-        $request = $this->getAllSegmentsRequest($environment_uuid);
+        $request = $this->getAllSegmentsRequest($environment_uuid, $cluster);
 
         try {
             $options = $this->createHttpClientOption();
@@ -694,13 +696,14 @@ class ClientApi
      * Retrieve all segments.
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllSegmentsAsync($environment_uuid)
+    public function getAllSegmentsAsync($environment_uuid, $cluster = null)
     {
-        return $this->getAllSegmentsAsyncWithHttpInfo($environment_uuid)
+        return $this->getAllSegmentsAsyncWithHttpInfo($environment_uuid, $cluster)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -714,14 +717,15 @@ class ClientApi
      * Retrieve all segments.
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllSegmentsAsyncWithHttpInfo($environment_uuid)
+    public function getAllSegmentsAsyncWithHttpInfo($environment_uuid, $cluster = null)
     {
         $returnType = '\OpenAPI\Client\Model\Segment[]';
-        $request = $this->getAllSegmentsRequest($environment_uuid);
+        $request = $this->getAllSegmentsRequest($environment_uuid, $cluster);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -763,11 +767,12 @@ class ClientApi
      * Create request for operation 'getAllSegments'
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllSegmentsRequest($environment_uuid)
+    public function getAllSegmentsRequest($environment_uuid, $cluster = null)
     {
         // verify the required parameter 'environment_uuid' is set
         if ($environment_uuid === null || (is_array($environment_uuid) && count($environment_uuid) === 0)) {
@@ -783,6 +788,15 @@ class ClientApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cluster,
+            'cluster', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -864,14 +878,15 @@ class ClientApi
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
      * @param  string $feature Unique identifier for the flag object in the API. (required)
      * @param  string $target Unique identifier for the target object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\Evaluation
      */
-    public function getEvaluationByIdentifier($environment_uuid, $feature, $target)
+    public function getEvaluationByIdentifier($environment_uuid, $feature, $target, $cluster = null)
     {
-        list($response) = $this->getEvaluationByIdentifierWithHttpInfo($environment_uuid, $feature, $target);
+        list($response) = $this->getEvaluationByIdentifierWithHttpInfo($environment_uuid, $feature, $target, $cluster);
         return $response;
     }
 
@@ -883,14 +898,15 @@ class ClientApi
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
      * @param  string $feature Unique identifier for the flag object in the API. (required)
      * @param  string $target Unique identifier for the target object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\Evaluation, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getEvaluationByIdentifierWithHttpInfo($environment_uuid, $feature, $target)
+    public function getEvaluationByIdentifierWithHttpInfo($environment_uuid, $feature, $target, $cluster = null)
     {
-        $request = $this->getEvaluationByIdentifierRequest($environment_uuid, $feature, $target);
+        $request = $this->getEvaluationByIdentifierRequest($environment_uuid, $feature, $target, $cluster);
 
         try {
             $options = $this->createHttpClientOption();
@@ -984,13 +1000,14 @@ class ClientApi
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
      * @param  string $feature Unique identifier for the flag object in the API. (required)
      * @param  string $target Unique identifier for the target object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEvaluationByIdentifierAsync($environment_uuid, $feature, $target)
+    public function getEvaluationByIdentifierAsync($environment_uuid, $feature, $target, $cluster = null)
     {
-        return $this->getEvaluationByIdentifierAsyncWithHttpInfo($environment_uuid, $feature, $target)
+        return $this->getEvaluationByIdentifierAsyncWithHttpInfo($environment_uuid, $feature, $target, $cluster)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1006,14 +1023,15 @@ class ClientApi
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
      * @param  string $feature Unique identifier for the flag object in the API. (required)
      * @param  string $target Unique identifier for the target object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEvaluationByIdentifierAsyncWithHttpInfo($environment_uuid, $feature, $target)
+    public function getEvaluationByIdentifierAsyncWithHttpInfo($environment_uuid, $feature, $target, $cluster = null)
     {
         $returnType = '\OpenAPI\Client\Model\Evaluation';
-        $request = $this->getEvaluationByIdentifierRequest($environment_uuid, $feature, $target);
+        $request = $this->getEvaluationByIdentifierRequest($environment_uuid, $feature, $target, $cluster);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1057,11 +1075,12 @@ class ClientApi
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
      * @param  string $feature Unique identifier for the flag object in the API. (required)
      * @param  string $target Unique identifier for the target object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getEvaluationByIdentifierRequest($environment_uuid, $feature, $target)
+    public function getEvaluationByIdentifierRequest($environment_uuid, $feature, $target, $cluster = null)
     {
         // verify the required parameter 'environment_uuid' is set
         if ($environment_uuid === null || (is_array($environment_uuid) && count($environment_uuid) === 0)) {
@@ -1089,6 +1108,15 @@ class ClientApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cluster,
+            'cluster', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -1185,14 +1213,15 @@ class ClientApi
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
      * @param  string $target Unique identifier for the target object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetEvaluations200Response
+     * @return \OpenAPI\Client\Model\Evaluation[]
      */
-    public function getEvaluations($environment_uuid, $target)
+    public function getEvaluations($environment_uuid, $target, $cluster = null)
     {
-        list($response) = $this->getEvaluationsWithHttpInfo($environment_uuid, $target);
+        list($response) = $this->getEvaluationsWithHttpInfo($environment_uuid, $target, $cluster);
         return $response;
     }
 
@@ -1203,14 +1232,15 @@ class ClientApi
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
      * @param  string $target Unique identifier for the target object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetEvaluations200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Evaluation[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getEvaluationsWithHttpInfo($environment_uuid, $target)
+    public function getEvaluationsWithHttpInfo($environment_uuid, $target, $cluster = null)
     {
-        $request = $this->getEvaluationsRequest($environment_uuid, $target);
+        $request = $this->getEvaluationsRequest($environment_uuid, $target, $cluster);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1249,23 +1279,23 @@ class ClientApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\GetEvaluations200Response' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\Evaluation[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\GetEvaluations200Response' !== 'string') {
+                        if ('\OpenAPI\Client\Model\Evaluation[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GetEvaluations200Response', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\Evaluation[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\GetEvaluations200Response';
+            $returnType = '\OpenAPI\Client\Model\Evaluation[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1286,7 +1316,7 @@ class ClientApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GetEvaluations200Response',
+                        '\OpenAPI\Client\Model\Evaluation[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1303,13 +1333,14 @@ class ClientApi
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
      * @param  string $target Unique identifier for the target object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEvaluationsAsync($environment_uuid, $target)
+    public function getEvaluationsAsync($environment_uuid, $target, $cluster = null)
     {
-        return $this->getEvaluationsAsyncWithHttpInfo($environment_uuid, $target)
+        return $this->getEvaluationsAsyncWithHttpInfo($environment_uuid, $target, $cluster)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1324,14 +1355,15 @@ class ClientApi
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
      * @param  string $target Unique identifier for the target object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEvaluationsAsyncWithHttpInfo($environment_uuid, $target)
+    public function getEvaluationsAsyncWithHttpInfo($environment_uuid, $target, $cluster = null)
     {
-        $returnType = '\OpenAPI\Client\Model\GetEvaluations200Response';
-        $request = $this->getEvaluationsRequest($environment_uuid, $target);
+        $returnType = '\OpenAPI\Client\Model\Evaluation[]';
+        $request = $this->getEvaluationsRequest($environment_uuid, $target, $cluster);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1374,11 +1406,12 @@ class ClientApi
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
      * @param  string $target Unique identifier for the target object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getEvaluationsRequest($environment_uuid, $target)
+    public function getEvaluationsRequest($environment_uuid, $target, $cluster = null)
     {
         // verify the required parameter 'environment_uuid' is set
         if ($environment_uuid === null || (is_array($environment_uuid) && count($environment_uuid) === 0)) {
@@ -1400,6 +1433,15 @@ class ClientApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cluster,
+            'cluster', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -1487,14 +1529,15 @@ class ClientApi
      * Get all feature flags activations
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\FeatureConfig[]
      */
-    public function getFeatureConfig($environment_uuid)
+    public function getFeatureConfig($environment_uuid, $cluster = null)
     {
-        list($response) = $this->getFeatureConfigWithHttpInfo($environment_uuid);
+        list($response) = $this->getFeatureConfigWithHttpInfo($environment_uuid, $cluster);
         return $response;
     }
 
@@ -1504,14 +1547,15 @@ class ClientApi
      * Get all feature flags activations
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\FeatureConfig[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFeatureConfigWithHttpInfo($environment_uuid)
+    public function getFeatureConfigWithHttpInfo($environment_uuid, $cluster = null)
     {
-        $request = $this->getFeatureConfigRequest($environment_uuid);
+        $request = $this->getFeatureConfigRequest($environment_uuid, $cluster);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1603,13 +1647,14 @@ class ClientApi
      * Get all feature flags activations
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeatureConfigAsync($environment_uuid)
+    public function getFeatureConfigAsync($environment_uuid, $cluster = null)
     {
-        return $this->getFeatureConfigAsyncWithHttpInfo($environment_uuid)
+        return $this->getFeatureConfigAsyncWithHttpInfo($environment_uuid, $cluster)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1623,14 +1668,15 @@ class ClientApi
      * Get all feature flags activations
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeatureConfigAsyncWithHttpInfo($environment_uuid)
+    public function getFeatureConfigAsyncWithHttpInfo($environment_uuid, $cluster = null)
     {
         $returnType = '\OpenAPI\Client\Model\FeatureConfig[]';
-        $request = $this->getFeatureConfigRequest($environment_uuid);
+        $request = $this->getFeatureConfigRequest($environment_uuid, $cluster);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1672,11 +1718,12 @@ class ClientApi
      * Create request for operation 'getFeatureConfig'
      *
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFeatureConfigRequest($environment_uuid)
+    public function getFeatureConfigRequest($environment_uuid, $cluster = null)
     {
         // verify the required parameter 'environment_uuid' is set
         if ($environment_uuid === null || (is_array($environment_uuid) && count($environment_uuid) === 0)) {
@@ -1692,6 +1739,15 @@ class ClientApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cluster,
+            'cluster', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -1772,14 +1828,15 @@ class ClientApi
      *
      * @param  string $identifier Unique identifier for the flag object in the API. (required)
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\FeatureConfig
      */
-    public function getFeatureConfigByIdentifier($identifier, $environment_uuid)
+    public function getFeatureConfigByIdentifier($identifier, $environment_uuid, $cluster = null)
     {
-        list($response) = $this->getFeatureConfigByIdentifierWithHttpInfo($identifier, $environment_uuid);
+        list($response) = $this->getFeatureConfigByIdentifierWithHttpInfo($identifier, $environment_uuid, $cluster);
         return $response;
     }
 
@@ -1790,14 +1847,15 @@ class ClientApi
      *
      * @param  string $identifier Unique identifier for the flag object in the API. (required)
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\FeatureConfig, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFeatureConfigByIdentifierWithHttpInfo($identifier, $environment_uuid)
+    public function getFeatureConfigByIdentifierWithHttpInfo($identifier, $environment_uuid, $cluster = null)
     {
-        $request = $this->getFeatureConfigByIdentifierRequest($identifier, $environment_uuid);
+        $request = $this->getFeatureConfigByIdentifierRequest($identifier, $environment_uuid, $cluster);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1890,13 +1948,14 @@ class ClientApi
      *
      * @param  string $identifier Unique identifier for the flag object in the API. (required)
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeatureConfigByIdentifierAsync($identifier, $environment_uuid)
+    public function getFeatureConfigByIdentifierAsync($identifier, $environment_uuid, $cluster = null)
     {
-        return $this->getFeatureConfigByIdentifierAsyncWithHttpInfo($identifier, $environment_uuid)
+        return $this->getFeatureConfigByIdentifierAsyncWithHttpInfo($identifier, $environment_uuid, $cluster)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1911,14 +1970,15 @@ class ClientApi
      *
      * @param  string $identifier Unique identifier for the flag object in the API. (required)
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeatureConfigByIdentifierAsyncWithHttpInfo($identifier, $environment_uuid)
+    public function getFeatureConfigByIdentifierAsyncWithHttpInfo($identifier, $environment_uuid, $cluster = null)
     {
         $returnType = '\OpenAPI\Client\Model\FeatureConfig';
-        $request = $this->getFeatureConfigByIdentifierRequest($identifier, $environment_uuid);
+        $request = $this->getFeatureConfigByIdentifierRequest($identifier, $environment_uuid, $cluster);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1961,11 +2021,12 @@ class ClientApi
      *
      * @param  string $identifier Unique identifier for the flag object in the API. (required)
      * @param  string $environment_uuid Unique identifier for the environment object in the API. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFeatureConfigByIdentifierRequest($identifier, $environment_uuid)
+    public function getFeatureConfigByIdentifierRequest($identifier, $environment_uuid, $cluster = null)
     {
         // verify the required parameter 'identifier' is set
         if ($identifier === null || (is_array($identifier) && count($identifier) === 0)) {
@@ -1987,6 +2048,15 @@ class ClientApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cluster,
+            'cluster', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -2075,14 +2145,15 @@ class ClientApi
      *
      * @param  string $identifier Unique identifier for the segment object in the API (required)
      * @param  string $environment_uuid Unique identifier for the environment object in the API (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\Segment|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function getSegmentByIdentifier($identifier, $environment_uuid)
+    public function getSegmentByIdentifier($identifier, $environment_uuid, $cluster = null)
     {
-        list($response) = $this->getSegmentByIdentifierWithHttpInfo($identifier, $environment_uuid);
+        list($response) = $this->getSegmentByIdentifierWithHttpInfo($identifier, $environment_uuid, $cluster);
         return $response;
     }
 
@@ -2093,14 +2164,15 @@ class ClientApi
      *
      * @param  string $identifier Unique identifier for the segment object in the API (required)
      * @param  string $environment_uuid Unique identifier for the environment object in the API (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\Segment|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSegmentByIdentifierWithHttpInfo($identifier, $environment_uuid)
+    public function getSegmentByIdentifierWithHttpInfo($identifier, $environment_uuid, $cluster = null)
     {
-        $request = $this->getSegmentByIdentifierRequest($identifier, $environment_uuid);
+        $request = $this->getSegmentByIdentifierRequest($identifier, $environment_uuid, $cluster);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2285,13 +2357,14 @@ class ClientApi
      *
      * @param  string $identifier Unique identifier for the segment object in the API (required)
      * @param  string $environment_uuid Unique identifier for the environment object in the API (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSegmentByIdentifierAsync($identifier, $environment_uuid)
+    public function getSegmentByIdentifierAsync($identifier, $environment_uuid, $cluster = null)
     {
-        return $this->getSegmentByIdentifierAsyncWithHttpInfo($identifier, $environment_uuid)
+        return $this->getSegmentByIdentifierAsyncWithHttpInfo($identifier, $environment_uuid, $cluster)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2306,14 +2379,15 @@ class ClientApi
      *
      * @param  string $identifier Unique identifier for the segment object in the API (required)
      * @param  string $environment_uuid Unique identifier for the environment object in the API (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSegmentByIdentifierAsyncWithHttpInfo($identifier, $environment_uuid)
+    public function getSegmentByIdentifierAsyncWithHttpInfo($identifier, $environment_uuid, $cluster = null)
     {
         $returnType = '\OpenAPI\Client\Model\Segment';
-        $request = $this->getSegmentByIdentifierRequest($identifier, $environment_uuid);
+        $request = $this->getSegmentByIdentifierRequest($identifier, $environment_uuid, $cluster);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2356,11 +2430,12 @@ class ClientApi
      *
      * @param  string $identifier Unique identifier for the segment object in the API (required)
      * @param  string $environment_uuid Unique identifier for the environment object in the API (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSegmentByIdentifierRequest($identifier, $environment_uuid)
+    public function getSegmentByIdentifierRequest($identifier, $environment_uuid, $cluster = null)
     {
         // verify the required parameter 'identifier' is set
         if ($identifier === null || (is_array($identifier) && count($identifier) === 0)) {
@@ -2382,6 +2457,15 @@ class ClientApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cluster,
+            'cluster', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -2469,14 +2553,15 @@ class ClientApi
      * Stream endpoint.
      *
      * @param  string $api_key api_key (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function stream($api_key)
+    public function stream($api_key, $cluster = null)
     {
-        $this->streamWithHttpInfo($api_key);
+        $this->streamWithHttpInfo($api_key, $cluster);
     }
 
     /**
@@ -2485,14 +2570,15 @@ class ClientApi
      * Stream endpoint.
      *
      * @param  string $api_key (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function streamWithHttpInfo($api_key)
+    public function streamWithHttpInfo($api_key, $cluster = null)
     {
-        $request = $this->streamRequest($api_key);
+        $request = $this->streamRequest($api_key, $cluster);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2544,13 +2630,14 @@ class ClientApi
      * Stream endpoint.
      *
      * @param  string $api_key (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function streamAsync($api_key)
+    public function streamAsync($api_key, $cluster = null)
     {
-        return $this->streamAsyncWithHttpInfo($api_key)
+        return $this->streamAsyncWithHttpInfo($api_key, $cluster)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2564,14 +2651,15 @@ class ClientApi
      * Stream endpoint.
      *
      * @param  string $api_key (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function streamAsyncWithHttpInfo($api_key)
+    public function streamAsyncWithHttpInfo($api_key, $cluster = null)
     {
         $returnType = '';
-        $request = $this->streamRequest($api_key);
+        $request = $this->streamRequest($api_key, $cluster);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2600,11 +2688,12 @@ class ClientApi
      * Create request for operation 'stream'
      *
      * @param  string $api_key (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function streamRequest($api_key)
+    public function streamRequest($api_key, $cluster = null)
     {
         // verify the required parameter 'api_key' is set
         if ($api_key === null || (is_array($api_key) && count($api_key) === 0)) {
@@ -2620,6 +2709,15 @@ class ClientApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cluster,
+            'cluster', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
         // header params
         if ($api_key !== null) {

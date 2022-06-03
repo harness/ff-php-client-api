@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Variation Class Doc Comment
  *
  * @category Class
+ * @description A variation of a flag that can be returned to a target
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -243,7 +244,7 @@ class Variation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identifier
      *
-     * @param string $identifier identifier
+     * @param string $identifier The unique identifier for the variation
      *
      * @return self
      */
@@ -267,7 +268,7 @@ class Variation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value
      *
-     * @param string $value value
+     * @param string $value The variation value to serve such as true or false for a boolean flag
      *
      * @return self
      */
@@ -291,7 +292,7 @@ class Variation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string|null $name The user friendly name of the variation
      *
      * @return self
      */
@@ -315,7 +316,7 @@ class Variation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string|null $description A description of the variation
      *
      * @return self
      */

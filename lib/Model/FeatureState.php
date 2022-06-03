@@ -34,6 +34,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FeatureState Class Doc Comment
  *
  * @category Class
+ * @description The state of a flag either off or on
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

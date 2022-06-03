@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WeightedVariation Class Doc Comment
  *
  * @category Class
+ * @description A variation and the weighting it should receive as part of a percentage rollout
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -231,7 +232,7 @@ class WeightedVariation implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets variation
      *
-     * @param string $variation variation
+     * @param string $variation The variation identifier
      *
      * @return self
      */
@@ -255,7 +256,7 @@ class WeightedVariation implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets weight
      *
-     * @param int $weight weight
+     * @param int $weight The weight to be given to the variation in percent
      *
      * @return self
      */

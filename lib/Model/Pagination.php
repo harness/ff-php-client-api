@@ -255,7 +255,7 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param int|null $version The version of this object.  The version will be incremented each time the object is modified
      *
      * @return self
      */
@@ -279,7 +279,7 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets page_count
      *
-     * @param int $page_count page_count
+     * @param int $page_count The total number of pages
      *
      * @return self
      */
@@ -303,7 +303,7 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets item_count
      *
-     * @param int $item_count item_count
+     * @param int $item_count The total number of items
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets page_size
      *
-     * @param int $page_size page_size
+     * @param int $page_size The number of items per page
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets page_index
      *
-     * @param int $page_index page_index
+     * @param int $page_index The current page
      *
      * @return self
      */

@@ -122,15 +122,16 @@ class MetricsApi
      * Send metrics to the Analytics server.
      *
      * @param  string $environment environment parameter in query. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      * @param  \OpenAPI\Client\Model\Metrics $metrics metrics (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function postMetrics($environment, $metrics = null)
+    public function postMetrics($environment, $cluster = null, $metrics = null)
     {
-        $this->postMetricsWithHttpInfo($environment, $metrics);
+        $this->postMetricsWithHttpInfo($environment, $cluster, $metrics);
     }
 
     /**
@@ -139,15 +140,16 @@ class MetricsApi
      * Send metrics to the Analytics server.
      *
      * @param  string $environment environment parameter in query. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      * @param  \OpenAPI\Client\Model\Metrics $metrics (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postMetricsWithHttpInfo($environment, $metrics = null)
+    public function postMetricsWithHttpInfo($environment, $cluster = null, $metrics = null)
     {
-        $request = $this->postMetricsRequest($environment, $metrics);
+        $request = $this->postMetricsRequest($environment, $cluster, $metrics);
 
         try {
             $options = $this->createHttpClientOption();
@@ -223,14 +225,15 @@ class MetricsApi
      * Send metrics to the Analytics server.
      *
      * @param  string $environment environment parameter in query. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      * @param  \OpenAPI\Client\Model\Metrics $metrics (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postMetricsAsync($environment, $metrics = null)
+    public function postMetricsAsync($environment, $cluster = null, $metrics = null)
     {
-        return $this->postMetricsAsyncWithHttpInfo($environment, $metrics)
+        return $this->postMetricsAsyncWithHttpInfo($environment, $cluster, $metrics)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -244,15 +247,16 @@ class MetricsApi
      * Send metrics to the Analytics server.
      *
      * @param  string $environment environment parameter in query. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      * @param  \OpenAPI\Client\Model\Metrics $metrics (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postMetricsAsyncWithHttpInfo($environment, $metrics = null)
+    public function postMetricsAsyncWithHttpInfo($environment, $cluster = null, $metrics = null)
     {
         $returnType = '';
-        $request = $this->postMetricsRequest($environment, $metrics);
+        $request = $this->postMetricsRequest($environment, $cluster, $metrics);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -281,12 +285,13 @@ class MetricsApi
      * Create request for operation 'postMetrics'
      *
      * @param  string $environment environment parameter in query. (required)
+     * @param  string $cluster Unique identifier for the cluster for the account (optional)
      * @param  \OpenAPI\Client\Model\Metrics $metrics (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postMetricsRequest($environment, $metrics = null)
+    public function postMetricsRequest($environment, $cluster = null, $metrics = null)
     {
         // verify the required parameter 'environment' is set
         if ($environment === null || (is_array($environment) && count($environment) === 0)) {
@@ -302,6 +307,15 @@ class MetricsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cluster,
+            'cluster', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -356,6 +370,11 @@ class MetricsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api-key');
+        if ($apiKey !== null) {
+            $headers['api-key'] = $apiKey;
+        }
         // this endpoint requires Bearer (JWT) authentication (access token)
         if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();

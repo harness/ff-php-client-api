@@ -94,7 +94,6 @@ Class | Method | HTTP request | Description
 - [Evaluation](docs/Model/Evaluation.md)
 - [FeatureConfig](docs/Model/FeatureConfig.md)
 - [FeatureState](docs/Model/FeatureState.md)
-- [GetEvaluations200Response](docs/Model/GetEvaluations200Response.md)
 - [KeyValue](docs/Model/KeyValue.md)
 - [Metrics](docs/Model/Metrics.md)
 - [MetricsData](docs/Model/MetricsData.md)
@@ -112,6 +111,14 @@ Class | Method | HTTP request | Description
 - [WeightedVariation](docs/Model/WeightedVariation.md)
 
 ## Authorization
+
+### ApiKeyAuth
+
+- **Type**: API key
+- **API key parameter name**: api-key
+- **Location**: HTTP header
+
+
 
 ### BearerAuth
 

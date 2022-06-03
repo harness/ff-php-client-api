@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Target Class Doc Comment
  *
  * @category Class
+ * @description A Target object
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -291,7 +292,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identifier
      *
-     * @param string $identifier identifier
+     * @param string $identifier The unique identifier for this target
      *
      * @return self
      */
@@ -315,7 +316,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets account
      *
-     * @param string $account account
+     * @param string $account The account ID that the target belongs to
      *
      * @return self
      */
@@ -339,7 +340,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets org
      *
-     * @param string $org org
+     * @param string $org The identifier for the organization that the target belongs to
      *
      * @return self
      */
@@ -363,7 +364,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets environment
      *
-     * @param string $environment environment
+     * @param string $environment The identifier for the environment that the target belongs to
      *
      * @return self
      */
@@ -387,7 +388,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets project
      *
-     * @param string $project project
+     * @param string $project The identifier for the project that this target belongs to
      *
      * @return self
      */
@@ -411,7 +412,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name The name of this Target
      *
      * @return self
      */
@@ -435,7 +436,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets anonymous
      *
-     * @param bool|null $anonymous anonymous
+     * @param bool|null $anonymous Indicates if this target is anonymous
      *
      * @return self
      */
@@ -459,7 +460,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attributes
      *
-     * @param object|null $attributes attributes
+     * @param object|null $attributes a JSON representation of the attributes for this target
      *
      * @return self
      */
@@ -483,7 +484,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_at
      *
-     * @param int|null $created_at created_at
+     * @param int|null $created_at The date and time in milliseconds when this Target was created
      *
      * @return self
      */
@@ -507,7 +508,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets segments
      *
-     * @param \OpenAPI\Client\Model\Segment[]|null $segments segments
+     * @param \OpenAPI\Client\Model\Segment[]|null $segments A list of Target Groups (Segments) that this Target belongs to
      *
      * @return self
      */

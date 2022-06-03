@@ -36,7 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Tag Class Doc Comment
  *
  * @category Class
- * @description A name and value pair.
+ * @description A tag has a name and value
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -229,7 +229,7 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name The name of the tag
      *
      * @return self
      */
@@ -253,7 +253,7 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value
      *
-     * @param string|null $value value
+     * @param string|null $value The value of the tag
      *
      * @return self
      */

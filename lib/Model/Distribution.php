@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Distribution Class Doc Comment
  *
  * @category Class
+ * @description Describes a distribution rule
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -231,7 +232,7 @@ class Distribution implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bucket_by
      *
-     * @param string $bucket_by bucket_by
+     * @param string $bucket_by The attribute to use when distributing targets across buckets
      *
      * @return self
      */
@@ -255,7 +256,7 @@ class Distribution implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets variations
      *
-     * @param \OpenAPI\Client\Model\WeightedVariation[] $variations variations
+     * @param \OpenAPI\Client\Model\WeightedVariation[] $variations A list of variations and the weight that should be given to each
      *
      * @return self
      */

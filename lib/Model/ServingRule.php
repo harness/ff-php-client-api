@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ServingRule Class Doc Comment
  *
  * @category Class
+ * @description The rule used to determine what variation to serve to a target
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -209,9 +210,6 @@ class ServingRule implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['rule_id'] === null) {
-            $invalidProperties[] = "'rule_id' can't be null";
-        }
         if ($this->container['priority'] === null) {
             $invalidProperties[] = "'priority' can't be null";
         }
@@ -239,7 +237,7 @@ class ServingRule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rule_id
      *
-     * @return string
+     * @return string|null
      */
     public function getRuleId()
     {
@@ -249,7 +247,7 @@ class ServingRule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rule_id
      *
-     * @param string $rule_id rule_id
+     * @param string|null $rule_id The unique identifier for this rule
      *
      * @return self
      */
@@ -273,7 +271,7 @@ class ServingRule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets priority
      *
-     * @param int $priority priority
+     * @param int $priority The rules priority relative to other rules.  The rules are evaluated in order with 1 being the highest
      *
      * @return self
      */
@@ -297,7 +295,7 @@ class ServingRule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets clauses
      *
-     * @param \OpenAPI\Client\Model\Clause[] $clauses clauses
+     * @param \OpenAPI\Client\Model\Clause[] $clauses A list of clauses to use in the rule
      *
      * @return self
      */

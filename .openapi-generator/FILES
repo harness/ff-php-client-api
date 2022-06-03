@@ -14,7 +14,6 @@ docs/Model/Error.md
 docs/Model/Evaluation.md
 docs/Model/FeatureConfig.md
 docs/Model/FeatureState.md
-docs/Model/GetEvaluations200Response.md
 docs/Model/KeyValue.md
 docs/Model/Metrics.md
 docs/Model/MetricsData.md
@@ -45,7 +44,6 @@ lib/Model/Error.php
 lib/Model/Evaluation.php
 lib/Model/FeatureConfig.php
 lib/Model/FeatureState.php
-lib/Model/GetEvaluations200Response.php
 lib/Model/KeyValue.php
 lib/Model/Metrics.php
 lib/Model/MetricsData.php
@@ -64,4 +62,3 @@ lib/Model/VariationMap.php
 lib/Model/WeightedVariation.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetEvaluations200ResponseTest.php

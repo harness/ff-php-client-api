@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * VariationMap Class Doc Comment
  *
  * @category Class
+ * @description A mapping of variations to targets and target groups (segments).  The targets listed here should receive this variation.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -234,7 +235,7 @@ class VariationMap implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets variation
      *
-     * @param string $variation variation
+     * @param string $variation The variation identifier
      *
      * @return self
      */
@@ -258,7 +259,7 @@ class VariationMap implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets targets
      *
-     * @param \OpenAPI\Client\Model\TargetMap[]|null $targets targets
+     * @param \OpenAPI\Client\Model\TargetMap[]|null $targets A list of target mappings
      *
      * @return self
      */
@@ -282,7 +283,7 @@ class VariationMap implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets target_segments
      *
-     * @param string[]|null $target_segments target_segments
+     * @param string[]|null $target_segments A list of target groups (segments)
      *
      * @return self
      */
